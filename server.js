@@ -19,8 +19,11 @@ app.use("/api/products", productsRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 
-app.use(notFound);
+app.get("/api/config/paypal", (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+);
 
+app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
