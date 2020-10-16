@@ -85,6 +85,7 @@ function ProductListScreen({ history }) {
               <th>PRICE</th>
               <th>CATEGORY</th>
               <th>BRAND</th>
+              <th>IN STOCK</th>
               <th></th>
             </tr>
           </thead>
@@ -96,7 +97,8 @@ function ProductListScreen({ history }) {
                 <td>${product.price}</td>
                 <td>{product.category}</td>
                 <td>{product.brand}</td>
-                <td>
+                <td>{product.countInStock}</td>
+                <td className="d-flex">
                   <LinkContainer to={`/admin/product/${product._id}/edit`}>
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit" />
