@@ -49,7 +49,7 @@ function ProductEditScreen({ match, history }) {
         setDescription(product.description);
       }
     }
-  }, [dispatch, product, productId, successUpdate]);
+  }, [history, dispatch, product, productId, successUpdate]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -130,6 +130,13 @@ function ProductEditScreen({ match, history }) {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
+              <Form.File
+                id="image-file"
+                label="Choose File"
+                custom
+                onChange={uploadFileHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId="brand">
               <Form.Label>Brand :</Form.Label>
@@ -139,13 +146,6 @@ function ProductEditScreen({ match, history }) {
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
               ></Form.Control>
-              <Form.File
-                id="image-file"
-                label="Choose File"
-                custom
-                onChange={uploadFileHandler}
-              ></Form.File>
-              {uploading && <Loader />}
             </Form.Group>
             <Form.Group controlId="countInStock">
               <Form.Label>Count In Stock :</Form.Label>

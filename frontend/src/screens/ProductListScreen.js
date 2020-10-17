@@ -45,7 +45,14 @@ function ProductListScreen({ history }) {
     } else {
       dispatch(listProducts());
     }
-  }, [dispatch, history, userInfo, successDelete, successCreate]);
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    createdProduct,
+    successDelete,
+    successCreate,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Do you want to delete product?")) {

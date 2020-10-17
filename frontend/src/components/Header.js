@@ -4,13 +4,14 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 
-const Header = () => {
+const Header = ({ history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const logoutHandler = () => {
     dispatch(logout());
+    history.push("/");
   };
   return (
     <header>
@@ -41,9 +42,8 @@ const Header = () => {
                   <Nav.Link className="fas fa-user"> Sign In</Nav.Link>
                 </LinkContainer>
               )}
-              {
-                userInfo && userInfo.isAdmin && (
-                  <NavDropdown title='Admin' id="adminmenu">
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title="Admin" id="adminmenu">
                   <LinkContainer to="/admin/userlist">
                     <NavDropdown.Item>Users</NavDropdown.Item>
                   </LinkContainer>
@@ -54,8 +54,7 @@ const Header = () => {
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
-                )
-              }
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

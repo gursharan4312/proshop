@@ -26,12 +26,6 @@ function UserListScreen({ history }) {
     }
   }, [dispatch, history, userInfo]);
 
-  const deleteHandler = (id) => {
-    if (window.confirm("Do you want to delete user?")) {
-      //   dispatch(deleteUser(id));
-    }
-  };
-
   return (
     <>
       <h1>Orders</h1>
@@ -44,7 +38,8 @@ function UserListScreen({ history }) {
           <thead>
             <tr>
               <th>ID</th>
-              <th>ORDER ITEMS</th>
+              <th>USER</th>
+              <th>DATE</th>
               <th>PRICE</th>
               <th>PAID</th>
               <th>DELIVERED</th>
@@ -55,36 +50,30 @@ function UserListScreen({ history }) {
             {orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
-                <td>{order.orderItems.length}</td>
-                <td>{order.totalPrice}</td>
+                <td>{order.user && order.user.name}</td>
+                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>${order.totalPrice}</td>
                 <td>
                   {order.isPaid ? (
-                    <i className="fas fa-check" style={{ color: "green" }} />
+                    order.paidAt.substring(0, 10)
                   ) : (
                     <i className="fas fa-times" style={{ color: "red" }} />
                   )}
                 </td>
                 <td>
                   {order.isDelivered ? (
-                    <i className="fas fa-check" style={{ color: "green" }} />
+                    order.deliveredAt.substring(0, 10)
                   ) : (
                     <i className="fas fa-times" style={{ color: "red" }} />
                   )}
                 </td>
 
                 <td>
-                  <LinkContainer to={`/admin/order/${order._id}/edit`}>
+                  <LinkContainer to={`/order/${order._id}`}>
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit" />
                     </Button>
                   </LinkContainer>
-                  <Button
-                    variant="danger"
-                    className="btn-sm"
-                    onClick={() => deleteHandler(order._id)}
-                  >
-                    <i className="fas fa-trash" />
-                  </Button>
                 </td>
               </tr>
             ))}
