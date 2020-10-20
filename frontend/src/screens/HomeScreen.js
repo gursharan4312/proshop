@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Card, Carousel, Col, Row } from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import Message from "../components/Message";
-import Loader from "../components/Loader";
 import Paginate from "../components/Paginate";
 import ProductCarousel from "../components/ProductCarousel";
 import Meta from "../components/Meta";
@@ -34,18 +34,35 @@ const HomeScreen = ({ match }) => {
         </Link>
       )}
       <h1>Latest Products</h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
+      {error ? (
         <Message variant="danger">{error}</Message>
       ) : (
         <>
           <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product product={product} />
-              </Col>
-            ))}
+            {!loading > 0
+              ? products.map((product) => (
+                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                    <Product product={product} />
+                  </Col>
+                ))
+              : Array.from(Array(8).keys()).map((key) => (
+                  <Col sm={12} md={6} lg={4} xl={3} key={key}>
+                    <Card className="my-3 p-3 rounded">
+                      <Skeleton height={180} />
+                      <Card.Body>
+                        <h1>
+                          <Skeleton />
+                        </h1>
+                        <p>
+                          <Skeleton />
+                        </p>
+                        <p>
+                          <Skeleton />
+                        </p>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                ))}
           </Row>
           <Paginate
             pages={pages}

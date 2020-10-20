@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Carousel, Image } from "react-bootstrap";
-import Loader from "./Loader";
+import Skeleton from "react-loading-skeleton";
 import Message from "./Message";
 import { listTopProducts } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,11 @@ const ProductCarosel = () => {
   }, [disptach]);
 
   return loading ? (
-    <Loader />
+    <Carousel className="bg-dark">
+      <Carousel.Item>
+        <Skeleton className="mx-auto" circle={true} height={300} width={300} />
+      </Carousel.Item>
+    </Carousel>
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (

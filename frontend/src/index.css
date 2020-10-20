@@ -40,3 +40,12 @@ h3 {
 .carousel a {
   margin: 0 auto;
 }
+
+.skleton-container {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.carousel-item span {
+  margin: 1rem auto;
+}
