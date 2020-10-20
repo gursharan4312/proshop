@@ -66,7 +66,7 @@ const ProductScreen = ({ history, match }) => {
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
-      {loading ? (
+      {loading || match.params.id !== product._id ? (
         <ProductDetailsSkleton />
       ) : error ? (
         <Message variant="danger">{error}</Message>
