@@ -19,6 +19,7 @@ import {
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
+import ProductDetailsSkleton from "../components/ProductDetailsSkleton";
 
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
 
@@ -66,7 +67,7 @@ const ProductScreen = ({ history, match }) => {
         Go Back
       </Link>
       {loading ? (
-        <Loader />
+        <ProductDetailsSkleton />
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
