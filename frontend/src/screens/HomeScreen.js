@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card, Carousel, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
 import Product from "../components/Product";
 import { useDispatch, useSelector } from "react-redux";

@@ -22,6 +22,7 @@ import Meta from "../components/Meta";
 import ProductDetailsSkleton from "../components/ProductDetailsSkleton";
 
 import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants";
+import { addToCart } from "../actions/cartActions";
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1);
@@ -53,7 +54,8 @@ const ProductScreen = ({ history, match }) => {
   }, [dispatch, match, successReview]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
+    dispatch(addToCart(product._id, qty));
+    history.push(`/cart`);
   };
 
   const submitReviewHandler = (e) => {
