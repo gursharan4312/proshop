@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { Carousel, Image } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
 import Message from "./Message";
@@ -27,16 +27,16 @@ const ProductCarosel = () => {
   ) : (
     <Carousel pause="hover" className="bg-dark">
       {products.map((product) => (
-        <Carousel.Item key={product._id}>
-          <Link to={`/product/${product._id}`}>
+        <LinkContainer to={`/product/${product._id}`}>
+          <Carousel.Item key={product._id}>
             <Image src={product.image} alt={product.name} fluid />
-          </Link>
-          <Carousel.Caption className="carousel-caption">
-            <h2>
-              {product.name} (${product.price})
-            </h2>
-          </Carousel.Caption>
-        </Carousel.Item>
+            <Carousel.Caption className="carousel-caption">
+              <h2>
+                {product.name} (${product.price})
+              </h2>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </LinkContainer>
       ))}
     </Carousel>
   );
