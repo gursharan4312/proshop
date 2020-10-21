@@ -8,10 +8,10 @@ import UserEditScreen from "./UserEditScreen";
 import ProductEditScreen from "./ProductEditScreen";
 import OrderScreen from "./OrderScreen";
 
-function AdminDashboard({ match }) {
+function AdminDashboard({ match, history }) {
   const [option, setOption] = useState("dashboard");
   useEffect(() => {
-    if (match.params.option) setOption(match.params.option);
+    if (match.params.option) setOption(match.params.option.toLowerCase());
 
     // /admin/:option/:pageNumber is same route as /admin/order/:id
     // setting pageNumber as id of the order
@@ -19,21 +19,42 @@ function AdminDashboard({ match }) {
       match.params.id = match.params.pageNumber;
     }
   }, [match]);
+
+  const changeOption = (o) => {
+    setOption(o);
+    history.push("/admin");
+  };
   return (
     <>
       <Row>
         <Col md={2}>
-          <ListGroup variant="flush">
-            <ListGroupItem onClick={() => setOption("dashboard")}>
+          <ListGroup>
+            <ListGroupItem
+              action
+              active={option === "dashboard"}
+              onClick={() => changeOption("dashboard")}
+            >
               Dashboard
             </ListGroupItem>
-            <ListGroupItem onClick={() => setOption("userList")}>
+            <ListGroupItem
+              action
+              active={option.substr(0, 4) === "user"}
+              onClick={() => changeOption("userlist")}
+            >
               Users
             </ListGroupItem>
-            <ListGroupItem onClick={() => setOption("productList")}>
+            <ListGroupItem
+              action
+              active={option.substr(0, 7) === "product"}
+              onClick={() => changeOption("productlist")}
+            >
               Products
             </ListGroupItem>
-            <ListGroupItem onClick={() => setOption("orderList")}>
+            <ListGroupItem
+              action
+              active={option.substr(0, 5) === "order"}
+              onClick={() => changeOption("orderlist")}
+            >
               Orders
             </ListGroupItem>
           </ListGroup>
@@ -41,15 +62,15 @@ function AdminDashboard({ match }) {
         <Col md={10}>
           {/* List Options */}
           {option === "dashboard" && <h1>Dashboard</h1>}
-          {option === "userList" && <UsersListScreen />}
-          {option === "productList" && (
+          {option === "userlist" && <UsersListScreen />}
+          {option === "productlist" && (
             <Route
               render={({ history, match }) => (
                 <ProductListScreen history={history} match={match} />
               )}
             />
           )}
-          {option === "orderList" && <OrderListScreen />}
+          {option === "orderlist" && <OrderListScreen />}
 
           {/* Edit Options */}
           {option === "user" && match.path.split("/")[4] === "edit" && (

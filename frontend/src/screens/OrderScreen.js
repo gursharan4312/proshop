@@ -92,6 +92,12 @@ function OrderScreen({ match }) {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+      {userInfo.isAdmin && (
+        <Link to="/admin/orderList" className="btn btn-light my-3">
+          go back
+        </Link>
+      )}
+
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>

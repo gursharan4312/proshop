@@ -13,11 +13,11 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
-import OrderListScreen from "./screens/OrderListScreen";
-import UserListScreen from "./screens/UserListScreen";
-import UserEditScreen from "./screens/UserEditScreen";
-import ProductListScreen from "./screens/ProductListScreen";
-import ProductEditScreen from "./screens/ProductEditScreen";
+// import OrderListScreen from "./screens/OrderListScreen";
+// import UserListScreen from "./screens/UserListScreen";
+// import UserEditScreen from "./screens/UserEditScreen";
+// import ProductListScreen from "./screens/ProductListScreen";
+// import ProductEditScreen from "./screens/ProductEditScreen";
 import AdminDashboard from "./screens/AdminDashboard";
 
 function App() {
@@ -37,6 +37,7 @@ function App() {
           <Route path="/cart/:id?" component={CartScreen} />
 
           {/* ADMIN Routes */}
+          <Route path="/admin" exact component={AdminDashboard} />
           <Route path="/admin/:option" exact component={AdminDashboard} />
           {/* <Route path="/admin/order/:id" exact component={AdminDashboard} /> */}
           <Route
