@@ -1,6 +1,7 @@
 import User from "../models/userModal.js";
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateTokens.js";
+import bcrypt from "bcryptjs";
 
 // @desc     Auth the user & get token
 // @route    GET /api/users/login
@@ -87,8 +88,17 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
-    if (req.body.password) {
-      user.password = req.body.password;
+    if (req.body.currentPassword && req.body.password) {
+      const match = await bcrypt.compare(
+        req.body.currentPassword,
+        user.password
+      );
+      if (match) {
+        user.password = req.body.password;
+      } else {
+        res.status(401);
+        throw new Error("Password do not match");
+      }
     }
 
     const updateUser = await user.save();
