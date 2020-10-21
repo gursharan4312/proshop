@@ -41,12 +41,12 @@ const HomeScreen = ({ match }) => {
           <Row>
             {!loading > 0
               ? products.map((product) => (
-                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                  <Col key={product._id} xs={6} sm={6} md={6} lg={4} xl={3}>
                     <Product product={product} />
                   </Col>
                 ))
               : Array.from(Array(8).keys()).map((key) => (
-                  <Col sm={12} md={6} lg={4} xl={3} key={key}>
+                  <Col xs={6} sm={6} sm={12} md={6} lg={4} xl={3} key={key}>
                     <Card className="my-3 p-3 rounded">
                       <Skeleton height={180} />
                       <Card.Body>
