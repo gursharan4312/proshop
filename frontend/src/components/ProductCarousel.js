@@ -27,8 +27,8 @@ const ProductCarosel = () => {
   ) : (
     <Carousel pause="hover" className="bg-dark">
       {products.map((product) => (
-        <LinkContainer to={`/product/${product._id}`}>
-          <Carousel.Item key={product._id}>
+        <LinkContainer key={product._id} to={`/product/${product._id}`}>
+          <Carousel.Item>
             <Image src={product.image} alt={product.name} fluid />
             <Carousel.Caption className="carousel-caption">
               <h2>
