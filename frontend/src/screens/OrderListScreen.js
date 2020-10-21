@@ -69,7 +69,13 @@ function UserListScreen({ history }) {
                 </td>
 
                 <td>
-                  <LinkContainer to={`/order/${order._id}`}>
+                  <LinkContainer
+                    to={
+                      userInfo.isAdmin
+                        ? `/admin/order/${order._id}`
+                        : `/order/${order._id}`
+                    }
+                  >
                     <Button variant="light" className="btn-sm">
                       <i className="fas fa-edit" />
                     </Button>

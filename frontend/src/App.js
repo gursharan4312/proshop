@@ -35,21 +35,36 @@ function App() {
           <Route path="/order/:id" component={OrderScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
-          <Route path="/admin" exact component={AdminDashboard} />
-          <Route path="/admin/userlist" component={UserListScreen} />
+
+          {/* ADMIN Routes */}
+          <Route path="/admin/:option" exact component={AdminDashboard} />
+          {/* <Route path="/admin/order/:id" exact component={AdminDashboard} /> */}
           <Route
+            path="/admin/:option/:pageNumber"
+            exact
+            component={AdminDashboard}
+          />
+          <Route
+            path="/admin/:option/:id/edit"
+            exact
+            component={AdminDashboard}
+          />
+          {/* <Route path="/admin/userlist" component={UserListScreen} /> */}
+          {/* <Route
             path="/admin/productlist"
             exact
             component={ProductListScreen}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/admin/productlist/:pageNumber"
             exact
             component={ProductListScreen}
-          />
-          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
-          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
-          <Route path="/admin/orderlist" component={OrderListScreen} />
+          /> */}
+          {/* <Route path="/admin/user/:id/edit" component={UserEditScreen} /> */}
+          {/* <Route path="/admin/product/:id/edit" component={ProductEditScreen} /> */}
+          {/* <Route path="/admin/orderlist" component={OrderListScreen} /> */}
+
+          {/* HomePage Routes */}
           <Route path="/search/:keyword" exact component={HomeScreen} />
           <Route path="/page/:pageNumber" exact component={HomeScreen} />
           <Route
