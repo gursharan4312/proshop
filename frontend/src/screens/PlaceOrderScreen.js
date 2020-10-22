@@ -13,6 +13,7 @@ import Message from "../components/Message";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Link } from "react-router-dom";
 import { createOrder } from "../actions/orderActions";
+import { CART_RESET } from "../constants/cartConstants";
 
 function PlaceOrderScreen({ history }) {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function PlaceOrderScreen({ history }) {
   const orderCreate = useSelector((state) => state.orderCreate);
 
   const { order, success, error } = orderCreate;
-  
+
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
@@ -55,6 +56,7 @@ function PlaceOrderScreen({ history }) {
         totalPrice: cart.totalPrice,
       })
     );
+    dispatch({ type: CART_RESET });
   };
 
   return (
