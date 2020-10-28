@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import SearchBox from "./SearchBox";
+import { CSSTransition } from "react-transition-group";
+import "./css/header.scss";
 
 const Header = ({ history }) => {
+  const [showSearchBtn, setShowSearchBtn] = useState(true);
+  const [openSearch, setOpenSearch] = useState(false);
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -22,11 +26,40 @@ const Header = ({ history }) => {
           <LinkContainer to="/">
             <Navbar.Brand>ProShop</Navbar.Brand>
           </LinkContainer>
+          <Nav.Link className="d-flex align-items-center py-0">
+            {showSearchBtn && (
+              <i
+                className="fas fa-search"
+                onClick={() => setOpenSearch(true)}
+              />
+            )}
+            <CSSTransition
+              in={openSearch}
+              timeout={300}
+              classNames="search-container"
+              unmountOnExit
+              onEnter={() => setShowSearchBtn(false)}
+              onExited={() => setShowSearchBtn(true)}
+            >
+              <>
+                <Route
+                  render={({ history }) => <SearchBox history={history} />}
+                />
+                <Button
+                  variant="outline-danger"
+                  className="ml-2"
+                  onClick={() => setOpenSearch(false)}
+                >
+                  Cancel
+                </Button>
+              </>
+            </CSSTransition>
+          </Nav.Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <SearchBox history={history} />} />
+            {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
             <Nav className="ml-auto">
-              <LinkContainer to="/cart">
+              <LinkContainer to="/cart" className="cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart" /> Cart
                 </Nav.Link>
@@ -41,9 +74,18 @@ const Header = ({ history }) => {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to="/login">
-                  <Nav.Link className="fas fa-user"> Sign In</Nav.Link>
-                </LinkContainer>
+                <>
+                  <LinkContainer to="/login">
+                    <Nav.Link>
+                      <i className="fas fa-user" /> Login
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/register">
+                    <Nav.Link>
+                      <i className="fas fa-sign-in" /> Sign up
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title="Admin" id="adminmenu">

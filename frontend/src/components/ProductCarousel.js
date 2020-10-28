@@ -5,6 +5,7 @@ import Skeleton from "react-loading-skeleton";
 import Message from "./Message";
 import { listTopProducts } from "../actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
+import "./css/productCarousel.scss";
 
 const ProductCarosel = () => {
   const disptach = useDispatch();

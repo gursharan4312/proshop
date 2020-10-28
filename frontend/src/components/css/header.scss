@@ -1,0 +1,52 @@
+header {
+  .search-container-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .search-container-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .search-container-exit {
+    opacity: 1;
+  }
+  .search-container-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .navbar-nav {
+    .nav-link {
+      position: relative;
+      &.active {
+        color: #00bc8c !important;
+        animation: none;
+      }
+      i {
+        margin: 0 5px;
+      }
+      &:hover {
+        color: #00bc8c !important;
+        animation: jump 1s infinite;
+      }
+      @keyframes jump {
+        0% {
+          top: 0;
+        }
+        25% {
+          top: -0.2rem;
+        }
+        50% {
+          top: 0;
+        }
+        75% {
+          top: 0.2rem;
+        }
+        100% {
+          top: 0;
+        }
+      }
+    }
+  }
+}

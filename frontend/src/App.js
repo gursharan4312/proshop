@@ -13,18 +13,13 @@ import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
-// import OrderListScreen from "./screens/OrderListScreen";
-// import UserListScreen from "./screens/UserListScreen";
-// import UserEditScreen from "./screens/UserEditScreen";
-// import ProductListScreen from "./screens/ProductListScreen";
-// import ProductEditScreen from "./screens/ProductEditScreen";
 import AdminDashboard from "./screens/AdminDashboard";
 
 function App() {
   return (
     <Router>
       <Header />
-      <main className="py-3">
+      <main>
         <Container>
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} />
@@ -50,22 +45,6 @@ function App() {
             exact
             component={AdminDashboard}
           />
-          {/* <Route path="/admin/userlist" component={UserListScreen} /> */}
-          {/* <Route
-            path="/admin/productlist"
-            exact
-            component={ProductListScreen}
-          /> */}
-          {/* <Route
-            path="/admin/productlist/:pageNumber"
-            exact
-            component={ProductListScreen}
-          /> */}
-          {/* <Route path="/admin/user/:id/edit" component={UserEditScreen} /> */}
-          {/* <Route path="/admin/product/:id/edit" component={ProductEditScreen} /> */}
-          {/* <Route path="/admin/orderlist" component={OrderListScreen} /> */}
-
-          {/* HomePage Routes */}
           <Route path="/search/:keyword" exact component={HomeScreen} />
           <Route path="/page/:pageNumber" exact component={HomeScreen} />
           <Route
