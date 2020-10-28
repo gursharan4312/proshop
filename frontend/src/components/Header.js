@@ -21,12 +21,12 @@ const Header = ({ history }) => {
   };
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>ProShop</Navbar.Brand>
           </LinkContainer>
-          <Nav.Link className="d-flex align-items-center py-0">
+          <Nav.Link className="d-flex align-items-center py-0 flex-grow-1">
             {showSearchBtn && (
               <i
                 className="fas fa-search"
@@ -56,8 +56,7 @@ const Header = ({ history }) => {
             </CSSTransition>
           </Nav.Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
+          <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
             <Nav className="ml-auto">
               <LinkContainer to="/cart" className="cart">
                 <Nav.Link>

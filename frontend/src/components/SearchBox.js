@@ -14,13 +14,13 @@ function SearchBox({ history }) {
   };
 
   return (
-    <Form inline onSubmit={submitHandler}>
+    <Form inline onSubmit={submitHandler} className="w-100">
       <Form.Control
         type="text"
         name="q"
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search Products..."
-        className="mr-sm-2 ml-sm-5"
+        className="flex-grow-1"
       ></Form.Control>
       <Button type="submit" variant="outline-success" className="p-2">
         Search

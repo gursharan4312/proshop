@@ -45,8 +45,8 @@ const HomeScreen = ({ match }) => {
                     <Product product={product} />
                   </Col>
                 ))
-              : Array.from(Array(8).keys()).map((key) => (
-                  <Col xs={6} sm={6} sm={12} md={6} lg={4} xl={3} key={key}>
+              : [...Array(8).keys()].map((key) => (
+                  <Col xs={6} sm={6} md={6} lg={4} xl={3} key={key}>
                     <Card className="my-3 p-3 rounded">
                       <Skeleton height={180} />
                       <Card.Body>

@@ -45,6 +45,7 @@ function App() {
             exact
             component={AdminDashboard}
           />
+          {/* Home Screen Routes */}
           <Route path="/search/:keyword" exact component={HomeScreen} />
           <Route path="/page/:pageNumber" exact component={HomeScreen} />
           <Route
