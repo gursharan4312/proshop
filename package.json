@@ -13,7 +13,7 @@
     "data:import": "node seeder",
     "data:destroy": "node seeder -d",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend",
-    "postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "production": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend && npm install && npm run start"
   },
   "author": "Gursharan Singh",
   "license": "ISC",
