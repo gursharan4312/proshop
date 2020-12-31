@@ -8,15 +8,12 @@ services:
     expose:
       - 5000
     environment:
-      VIRTUAL_HOST: ec2-18-234-193-221.compute-1.amazonaws.com
-      VIRTUAL_PORT: 5000
-      LETSENCRYPT_HOST: ec2-18-234-193-221.compute-1.amazonaws.com
-      LETSENCRYPT_EMAIL: gursharansingh4312@gmail.com
       JWT_SECRET: ${JWT_SECRET}
       MONGO_URI: ${MONGO_URI}
       NODE_ENV: ${NODE_ENV}
       PAYPAL_CLIENT_ID: ${PAYPAL_CLIENT_ID}
       PORT: ${PORT}
+container_name: proshop
 networks:
   default:
     external:
