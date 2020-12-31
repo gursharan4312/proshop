@@ -13,7 +13,7 @@ services:
       NODE_ENV: ${NODE_ENV}
       PAYPAL_CLIENT_ID: ${PAYPAL_CLIENT_ID}
       PORT: ${PORT}
-  container_name: proshop
+    container_name: proshop
 networks:
   default:
     external:
