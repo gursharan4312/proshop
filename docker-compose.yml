@@ -12,6 +12,11 @@ services:
       VIRTUAL_PORT: 5000
       LETSENCRYPT_HOST: proshop.gursharansingh.ca
       LETSENCRYPT_EMAIL: gursharansingh4312@gmail.com
+      JWT_SECRET: "${JWT_SECRET}"
+      MONGO_URI: "${MONGO_URI}"
+      NODE_ENV: "${NODE_ENV}"
+      PAYPAL_CLIENT_ID: "${PAYPAL_CLIENT_ID}"
+      PORT: "${PORT}"
 networks:
   default:
     external:
