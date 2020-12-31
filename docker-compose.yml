@@ -4,7 +4,7 @@ services:
   proshop:
     build:
       context: .
-      dockerfile: ./DockerFile
+      dockerfile: ./Dockerfile
     ports:
       - 80:5000
     expose:
