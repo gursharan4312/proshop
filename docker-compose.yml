@@ -5,8 +5,6 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    ports:
-      - 80:5000
     expose:
       - 5000
     environment:
@@ -14,7 +12,6 @@ services:
       VIRTUAL_PORT: 5000
       LETSENCRYPT_HOST: proshop.gursharansingh.ca
       LETSENCRYPT_EMAIL: gursharansingh4312@gmail.com
-    container_name: proshop
 networks:
   default:
     external:
