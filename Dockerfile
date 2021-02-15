@@ -5,5 +5,4 @@ RUN npm install
 COPY . ./
 RUN npm install --prefix frontend
 RUN npm run build --prefix frontend
-EXPOSE 5000
 CMD [ "npm","start" ]
